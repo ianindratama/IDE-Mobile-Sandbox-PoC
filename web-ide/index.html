@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Companion Mode - Web IDE</title>
+    <link rel="stylesheet" href="css/styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="app-container">
+        <!-- Header -->
+        <header class="header">
+            <div class="logo">
+                <span class="logo-icon">⚡</span>
+                <span class="logo-text">Companion Mode</span>
+            </div>
+            <div class="connection-status" id="connectionStatus">
+                <span class="status-dot"></span>
+                <span class="status-text">Connecting...</span>
+            </div>
+        </header>
+
+        <!-- Main Content -->
+        <main class="main-content">
+            <!-- Editor Panel -->
+            <div class="editor-panel">
+                <div class="panel-header">
+                    <span class="panel-title">📝 Widget JSON Editor</span>
+                    <span class="sync-indicator" id="syncIndicator">
+                        <span class="sync-dot"></span>
+                        <span class="sync-text">Ready</span>
+                    </span>
+                </div>
+                <div id="editor-container"></div>
+            </div>
+
+            <!-- Pairing Panel -->
+            <aside class="pairing-panel">
+                <div class="pairing-card">
+                    <h2 class="pairing-title">📱 Connect Your Device</h2>
+                    <p class="pairing-description">Enter this code in your Companion App to see live preview</p>
+                    
+                    <div class="pairing-code-container">
+                        <div class="pairing-code" id="pairingCode">------</div>
+                        <button class="copy-btn" id="copyBtn" title="Copy code">
+                            📋
+                        </button>
+                    </div>
+                    
+                    <div class="companion-status" id="companionStatus">
+                        <div class="waiting-animation">
+                            <span></span><span></span><span></span>
+                        </div>
+                        <span>Waiting for device...</span>
+                    </div>
+                </div>
+
+                <div class="instructions-card">
+                    <h3>Quick Start</h3>
+                    <ol>
+                        <li>Open the Companion App on your phone</li>
+                        <li>Enter the pairing code above</li>
+                        <li>Start typing widget JSON on the left</li>
+                        <li>See it render instantly on your device!</li>
+                    </ol>
+                </div>
+
+                <div class="example-card">
+                    <h3>Example Widget</h3>
+                    <pre><code>{
+  "type": "Text",
+  "data": "Hello, World!",
+  "style": {
+    "fontSize": 24,
+    "color": "#FF5722"
+  }
+}</code></pre>
+                    <button class="try-example-btn" id="tryExampleBtn">Try This Example</button>
+                </div>
+            </aside>
+        </main>
+    </div>
+
+    <!-- Scripts -->
+    <script src="https://cdn.socket.io/4.7.2/socket.io.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/monaco-editor/0.44.0/min/vs/loader.min.js"></script>
+    <script src="js/app.js"></script>
+</body>
+</html>
